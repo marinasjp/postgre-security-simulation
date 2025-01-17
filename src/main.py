@@ -3,6 +3,7 @@ from PROSPEGQL import PROSPEGQL
 from Database import Database
 from User import User
 from cryptography.fernet import Fernet
+import configparser
 
 
 def decrypt_data(data):
@@ -59,21 +60,50 @@ def send_to_UI(resultados):
     
     print("======== FIN DE RESULTADOS ========")
 
-def get_current_user():
+def get_current_user(user_name):
     '''
     Obtener el usuario que hace la query.
     '''
-    user = User ("Carmen", "gerente")
+    user = User (user_name)
+    
     return user
 
 
+def read_config():
+    # Create a ConfigParser object
+    config = configparser.ConfigParser()
+
+    # Read the configuration file
+    config.read('config.ini')
+
+    # Access values from the configuration file
+    log_level = config.get('General', 'log_level')
+    user = config.getboolean('General', 'user')
+    db_name = config.get('Database', 'db_name')
+    db_host = config.get('Database', 'db_host')
+    db_port = config.get('Database', 'db_port')
+
+    # Return a dictionary with the retrieved values
+    config_values = {
+        'log_level': log_level,
+        'user': user,
+        'db_name': db_name,
+        'db_host': db_host,
+        'db_port': db_port
+    }
+
+    return config_values
+
+
 if __name__=="__main__":
-    global metadatakey
+
+    config_data = read_config()
+        
     db = Database()
     metadatakey = Fernet.generate_key()
     prospeql = PROSPEGQL(db, metadatakey)
     
-    client = get_current_user()
+    client = get_current_user(config_data["user"])
 
 
     try:
@@ -85,4 +115,4 @@ if __name__=="__main__":
         send_to_UI(results) 
         
     except Exception as e:
-        raise("Error:", e)
+        print("Error:", e)

@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "type": "debugpy",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/${input:programPath}"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "programPath",
+      "description": "Select the Python file to debug",
+      "options": [
+        "src/main.py",
+        "src/Database.py",
+        "src/PROSPEGQL.py",
+        "src/User.py"
+      ]
+    }
+  ]
+}
