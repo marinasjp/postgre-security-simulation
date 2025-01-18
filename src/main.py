@@ -4,6 +4,7 @@ from Database import Database
 from User import User
 from cryptography.fernet import Fernet
 import configparser
+import logging
 
 
 def decrypt_data(data):
@@ -47,18 +48,14 @@ def send_to_UI(resultados):
     La implementación de esta función dependerá de cómo visualizará el cliente los resultados.
     Los resultados están en formato BLOB.
     '''
-    print("======== RESULTADOS DE LA QUERY ========")
+    logging.info("======== RESULTADOS DE LA QUERY ========")
 
-    print("Resultados cifrados: \n")
-    print(resultados)
-    print()
-    
-    print("Resultados descifrados: \n")
+    logging.info("Resultados cifrados: \n%s", resultados)
 
     resultados_descifrados = decrypt_data(resultados)
-    print(resultados_descifrados)
-    
-    print("======== FIN DE RESULTADOS ========")
+    logging.info("Resultados descifrados: \n%s", resultados_descifrados)
+
+    logging.info("======== FIN DE RESULTADOS ========")
 
 def get_current_user(user_name):
     '''
@@ -100,21 +97,24 @@ def read_config():
 
 
 if __name__=="__main__":
-
     config_data = read_config()
-        
+    if config_data['log_level'] == 'info':
+        logging.basicConfig(filename="resultados_query_"+ config_data["user"] + ".log", level=logging.INFO)
+
+
     db = Database()
     metadatakey = Fernet.generate_key()
     prospeql = PROSPEGQL(db, metadatakey)
     
     client = get_current_user(config_data["user"])
+        
 
 
     try:
         columns = config_data["columnas"]
         # 1. Un usuario hace una query usando las funciones de PROSPEGQL
         query = "SELECT " + columns + " FROM " + config_data["tabla"]
-        print("El usuario", client.name, "ejecuta la query:", query, "\n")
+        logging.info("El usuario %s ejecuta la query: %s\n", client.name, query)
         results = prospeql.get_container(query, client)
         
         send_to_UI(results) 
