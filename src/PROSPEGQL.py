@@ -82,13 +82,16 @@ class PROSPEGQL:
 
     def execute_query(self, table, columns, acl):
         # Comprobación de permisos
+        allowed_columns = []
         for column in columns:
             if "read" not in acl[column.strip()]:
-                raise PermissionError(f"Access denied for column: {column}")
+                print(f"Access denied for column: {column}")
+            else:
+                allowed_columns.append(column.strip())
 
         # Si usuario tiene permiso de leer, acceder a los datos
-        # Asumimos que la base de datos tiene una llamada como fetch_data que devuelve los datos de la tabla
-        data = self.database.fetch_data(table) 
+    
+        data = self.database.fetch_data(table, allowed_columns)
         return data
 
     def get_key_from_AS(self, client):
@@ -144,10 +147,7 @@ class PROSPEGQL:
         return key
 
     
-    def encrypt_data(self, key, data):
-        
-        print("Datos antes del cifrado", data)
-        
+    def encrypt_data(self, key, data):        
         cipher_suite = Fernet(key)
         encrypted_data = []
         for item in data:
@@ -198,15 +198,15 @@ class PROSPEGQL:
     def get_container(self, query, client):
         # 2.PROSPEGQL determina qué columnas y tablas está pidiendo el usuario.
         table, columns = self.parse_query(query)
-        print("Se han determinado las columnas y la tabla que se han pedido. Tabla", table, "Columnas:", columns)
+        print("Se han determinado las columnas y la tabla que se han pedido. Tabla:", table + ". Columnas:", columns, "\n")
         
         # 3. genera una ACL preguntando a la base de datos sobre los privilegios de estas tablas y columnas. 
         acl = self.generate_acl(client, table)
-        print("Se ha determinado la ACL del usuario", acl)
+        print("Se ha determinado la ACL del usuario",client.name + ":" ,acl, "\n")
         
         # 4. PROSPEGQL realiza la query a la base de datos para obtener los resultados
         data = self.execute_query(table, columns, acl)
-        print("Se ha ejecutado la query para obtener los datos según la acl. Datos:", data)
+        print("Se ha ejecutado la query para obtener los datos según la acl. Datos antes del cifrado: \n", data, "\n")
         
         # 5. Los resultados y la ACL se pasan a un generador de contenedores.
         container = self.generate_container(table, data, acl, client)

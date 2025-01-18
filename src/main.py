@@ -114,7 +114,7 @@ if __name__=="__main__":
         columns = config_data["columnas"]
         # 1. Un usuario hace una query usando las funciones de PROSPEGQL
         query = "SELECT " + columns + " FROM " + config_data["tabla"]
-        print("El usuario", client.name, "ejecuta la query:", query)
+        print("El usuario", client.name, "ejecuta la query:", query, "\n")
         results = prospeql.get_container(query, client)
         
         send_to_UI(results) 
