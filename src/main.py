@@ -79,6 +79,8 @@ def read_config():
     # Access values from the configuration file
     log_level = config.get('General', 'log_level')
     user = config.getboolean('General', 'user')
+    columns = config.getboolean('General', 'columnas')
+    tabla = config.getboolean('General', 'tabla')
     db_name = config.get('Database', 'db_name')
     db_host = config.get('Database', 'db_host')
     db_port = config.get('Database', 'db_port')
@@ -87,6 +89,8 @@ def read_config():
     config_values = {
         'log_level': log_level,
         'user': user,
+        'columas': columns,
+        'tabla': tabla,
         'db_name': db_name,
         'db_host': db_host,
         'db_port': db_port
