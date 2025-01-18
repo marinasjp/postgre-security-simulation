@@ -1,3 +1,4 @@
+
 class Database:
     def fetch_data(self, table):
         # Simulación de la base de datos
@@ -5,7 +6,7 @@ class Database:
             return [
                 {"id": 1, "nombre": "Mario", "ciudad": "Nueva York", "edad": "22"},
                 {"id": 2, "nombre": "Maria", "ciudad": "Londres", "edad": "23"},
-                {"id": 3, "nombre": "Pedro", "ciudad": "Tokio", "edad": "24"},,
+                {"id": 3, "nombre": "Pedro", "ciudad": "Tokio", "edad": "24"},
                 {"id": 4, "nombre": "Ana", "ciudad": "Paris", "edad": "25"}
             ]
         elif table == "productos":
