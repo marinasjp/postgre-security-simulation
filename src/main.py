@@ -74,13 +74,13 @@ def read_config():
     config = configparser.ConfigParser()
 
     # Read the configuration file
-    config.read('config.ini')
+    config.read('./config.ini')
 
     # Access values from the configuration file
     log_level = config.get('General', 'log_level')
-    user = config.getboolean('General', 'user')
-    columns = config.getboolean('General', 'columnas')
-    tabla = config.getboolean('General', 'tabla')
+    user = config.get('General', 'user')
+    columns = config.get('General', 'columnas')
+    tabla = config.get('General', 'tabla')
     db_name = config.get('Database', 'db_name')
     db_host = config.get('Database', 'db_host')
     db_port = config.get('Database', 'db_port')
@@ -89,7 +89,7 @@ def read_config():
     config_values = {
         'log_level': log_level,
         'user': user,
-        'columas': columns,
+        'columnas': columns,
         'tabla': tabla,
         'db_name': db_name,
         'db_host': db_host,
@@ -111,9 +111,9 @@ if __name__=="__main__":
 
 
     try:
-        columns = ", ".join(config_data["columnas"])
+        columns = config_data["columnas"]
         # 1. Un usuario hace una query usando las funciones de PROSPEGQL
-        query = "SELECT " + columns + "FROM " + config_data["tabla"]
+        query = "SELECT " + columns + " FROM " + config_data["tabla"]
         print("El usuario", client.name, "ejecuta la query:", query)
         results = prospeql.get_container(query, client)
         
