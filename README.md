@@ -3,3 +3,5 @@ Simulación de un método de securización en PostgreSQL.
 
 Como ejercicio adicional para el trabajo de la asignatura Protección de Sistemas y Servicios, he desarrollado este proyecto.
 Es una simulación de los elementos básicos de la solución presentada en el ensayo  End-to-End Database Software Security de Denis Ulybyshev, Michael Rogers, Vadim Kholodilo y Bradley Northern.
+
+Por el momento, el código solo acepta una query de la estructura "SELECT <columnas> FROM <tabla>".
