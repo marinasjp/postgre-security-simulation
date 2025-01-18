@@ -21,17 +21,60 @@ class PROSPEGQL:
         # Simplificación de la obtencion de las ACLs
         acl = {
             "Carmen": {
-                
                 "clientes": {
                     "id": ["read"], 
                     "nombre": ["read"], 
                     "ciudad": ["read"], 
                     "edad": ["read"]
                 },
-                "tabla2": { 
-                "column1": ["read"],
-                "column2": ["read", "write"]}
+                "productos": { 
+                    "id": ["read"],
+                    "nombre": ["read", "write"],
+                    "precio": ["read", "write"]},
+                "ventas": {
+                    "id": ["read"],
+                    "fecha": ["read", "write"],
+                    "cantidad": ["read", "write"],
+                    "producto": ["read"]
+                }
                 
+            },
+            "Pepe": {
+                "clientes": {
+                    "id": ["read"], 
+                    "nombre": ["read"], 
+                    "ciudad": ["read"], 
+                    "edad": ["read"]
+                },
+                "productos": {
+                    "id": ["read"],
+                    "nombre": ["read"],
+                    "precio": ["read"]},
+                "ventas": {
+                    "id": ["read"],
+                    "fecha": ["read"],
+                    "cantidad": ["read"],
+                    "producto": []
+                },
+                
+                "Lucia": {
+                    "clientes": {
+                        "id": [], 
+                        "nombre": ["read"], 
+                        "ciudad": [], 
+                        "edad": []
+                    },
+                    "productos": {
+                        "id": ["read"],
+                        "nombre": ["read"],
+                        "precio": ["read"]},
+                    "ventas": {
+                        "id": [],
+                        "fecha": [],
+                        "cantidad": [],
+                        "producto": []
+                    }
+                }
             }
         }
 
