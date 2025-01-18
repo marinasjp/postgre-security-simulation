@@ -1,0 +1,5 @@
+INFO:root:El usuario Marina ejecuta la query: SELECT id, nombre, edad FROM clientes
+
+INFO:root:Se han determinado las columnas y la tabla que se han pedido. Tabla: clientes. Columnas: ['id', ' nombre', ' edad']
+
+ERROR:root:Usuario no encontrado en la base de datos

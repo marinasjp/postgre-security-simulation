@@ -1,0 +1,10 @@
+INFO:root:El usuario Lucia ejecuta la query: SELECT id, nombre, edad FROM ventas
+
+INFO:root:Se han determinado las columnas y la tabla que se han pedido. Tabla: ventas. Columnas: ['id', ' nombre', ' edad']
+
+INFO:root:Se ha determinado la ACL del usuario Lucia: {'id': [], 'fecha': [], 'cantidad': [], 'producto': []}
+
+ERROR:root:Usuario no tiene acceso a la columna: id
+ERROR:root:Usuario no tiene acceso a la columna:  nombre
+ERROR:root:Usuario no tiene acceso a la columna:  edad
+ERROR:root:Usuario no tiene permisos para leer ninguna columna.

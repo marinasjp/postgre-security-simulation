@@ -17,7 +17,7 @@ class PROSPEGQL:
             return table[0], columns
         
         except IndexError:
-            raise ValueError("SQL query invalida")
+            logging.error("SQL query invalida")
 
     def generate_acl(self, user, tabla):
         # Simplificación de la obtencion de las ACLs
@@ -51,7 +51,7 @@ class PROSPEGQL:
                 "productos": {
                     "id": ["read"],
                     "nombre": ["read"],
-                    "precio": ["read"]},
+                    "precio": []},
                 "ventas": {
                     "id": ["read"],
                     "fecha": ["read"],
@@ -59,7 +59,8 @@ class PROSPEGQL:
                     "producto": []
                 },
                 
-                "Lucia": {
+                },
+            "Lucia": {
                     "clientes": {
                         "id": [], 
                         "nombre": ["read"], 
@@ -76,23 +77,28 @@ class PROSPEGQL:
                         "cantidad": [],
                         "producto": []
                     }
-                }
             }
         }
 
+        if user.name not in acl:
+            logging.error("Usuario no encontrado en la base de datos")
         return acl[user.name][tabla]
 
     def execute_query(self, table, columns, acl):
         # Comprobación de permisos
         allowed_columns = []
         for column in columns:
-            if "read" not in acl[column.strip()]:
-                logging.info(f"Access denied for column: {column}")
+            column = column.strip()
+            if column not in acl or "read" not in acl[column]:
+                logging.error(f"Usuario no tiene acceso a la columna: {column}")
             else:
                 allowed_columns.append(column.strip())
 
         # Si usuario tiene permiso de leer, acceder a los datos
-    
+        if allowed_columns == []:
+            logging.error("Usuario no tiene permisos para leer ninguna columna.")
+            exit()
+            
         data = self.database.fetch_data(table, allowed_columns)
         return data
 

@@ -71,7 +71,7 @@ def read_config():
     config = configparser.ConfigParser()
 
     # Read the configuration file
-    config.read('./config.ini')
+    config.read('../config.ini')
 
     # Access values from the configuration file
     log_level = config.get('General', 'log_level')
@@ -99,7 +99,7 @@ def read_config():
 if __name__=="__main__":
     config_data = read_config()
     if config_data['log_level'] == 'info':
-        logging.basicConfig(filename="resultados_query_"+ config_data["user"] + ".log", level=logging.INFO)
+        logging.basicConfig(filename="../logs/resultados_query_"+ config_data["user"] + ".log", level=logging.INFO)
 
 
     db = Database()

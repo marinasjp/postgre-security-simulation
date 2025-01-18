@@ -1,0 +1,16 @@
+INFO:root:El usuario Pepe ejecuta la query: SELECT id, nombre, precio FROM productos
+
+INFO:root:Se han determinado las columnas y la tabla que se han pedido. Tabla: productos. Columnas: ['id', ' nombre', ' precio']
+
+INFO:root:Se ha determinado la ACL del usuario Pepe: {'id': ['read'], 'nombre': ['read'], 'precio': []}
+
+ERROR:root:Usuario no tiene acceso a la columna: precio
+INFO:root:Se ha ejecutado la query para obtener los datos según la acl. Datos antes del cifrado: 
+[{'id': 1, 'nombre': 'Camiseta'}, {'id': 2, 'nombre': 'Pantalón'}, {'id': 3, 'nombre': 'Zapatos'}, {'id': 4, 'nombre': 'Gorra'}]
+
+INFO:root:======== RESULTADOS DE LA QUERY ========
+INFO:root:Resultados cifrados: 
+{'data': [{b'gAAAAABni-xMONirv9Ns_NBMnfdbGuWM_Uz9Ju7SsMR8qOvvkZYHnNevAX8rcIdom8TR1LDHu8yKa0yKEJUh1a5Zyh6v9M3ILg==': b'gAAAAABni-xMzPcPf11sE82oHHU6XFUtkA6IwwDrys_CxzMlMRfU4IAl6uT1AHmBjjfTFQ0B9SACdfa9dAAg7tdU46Db6s__Ww==', b'gAAAAABni-xM-eO-fNHI-aABlVYJ6UHhsqKurRnLemjEbUhLVAX4RsqAmj27iJ3a4No7z6wr49JbK_8s-t4PqMSO0jFH2Mdb9Q==': b'gAAAAABni-xMhwsWfMm7Hk4OBPVAAjt3C_CBlXfZrlrVTrdzqBJV77UDyAbmpLVCvNxgmCgheT8CfBTp_fq2U_yFxN3DWrGgcA=='}, {b'gAAAAABni-xMAke5YWEcnkJLPFM3SgshEpv0NPhQEO-MoWFbJmmNtbY3NSo1orJW3hD499ceBNGMdsmky0Hoe8fxeC4txqoH4A==': b'gAAAAABni-xMGu6J51r1nXLLV9zd98g2RvuljqF-nPH8pbHlutofLeCVEqaAJ71V3CwJP1ugWIjKlaFuwSjIB_ZapUMN89fYYw==', b'gAAAAABni-xMocTnjeCs7qpLrY0oGmJFsCRCnFYcjJexZ6YCPtHnyOuZwwaePX4mkWeLiFQtwDVnj8qlRbFBdSnb0hKkFPzhuw==': b'gAAAAABni-xM5Pa7S6NZoeZoILbWQb74VjBqpsWSjYSedyS9nSiZtSrWc5EPZk_OkM-iHD-j1MQoXo1YcN956ByzkGvL9SErgw=='}, {b'gAAAAABni-xMRZVM35gE9ueVavRiBY8PwipzyvhT4Y-v-mtpJQ3olaE0t2AwAWXzCbv661P5cfKZ0ZiOcKB4Qr2SIMHENKMkcw==': b'gAAAAABni-xMqByIvCaNQkr0zkCEgWb9iReMeyypC2VdIY7fGoh9bi73qvp-fv1v7iKgVP4FxEJu5m6uy3wwFT3Swj0n3B73_A==', b'gAAAAABni-xMRcpwFoK8Gj_lPQyOpA6NkaMyvVW9_zVn44u0YV01C1yYlW9SPYZ0bStrqvaKY3_fV3Rgxv3KJor8oMnWFYxJAA==': b'gAAAAABni-xMOn-UwF7JVQPicPdyjXY0k-ST3zdN1gu1FmKuL1hgXJxf10fnZQEqeexAt6Ib1qBGdhOVEtheFJPriPHohm33Qg=='}, {b'gAAAAABni-xM7tklmBbK0vTFjSPPFByO0s-eicPZqc38Z2mR9Kpr5A6xQ0PZ816I2p1MaQS_82mRmz4muywOZB7htcCvOZkU3Q==': b'gAAAAABni-xM8ukOzHt5xujVYdM6rWYSHrZkCQxcoPJiuMt2DiUJFq-WJR7uE9Qumy0OE8d_6-C8c0KjBt0rBOpFieJIkQEjgQ==', b'gAAAAABni-xMD1gCkrHLKcLR8Lbw7Fivkns3xSYc0GIJubJLtjgeQpWY73_Mhi-y7RtsBs_vqMYlJpkAsWzfpBqGN9Vws3XNiA==': b'gAAAAABni-xMX4V7DsNLAGsVd0wGmSXkJHoyQqQjlD52paCh_kfuIn5WQ49-Fox0JL5Obdl-UUa63u91QbPivXAENsrjQjozxQ=='}], 'metadata': [{b'gAAAAABni-xMmzPOKafeWuLSsUid5BjCKgEstm4SO67W7BFkHVBs_p9OM1gNzqVUVud69TVa8f6OZCJIj82rA-JWWO3L637qZg==': [b'gAAAAABni-xMc7LogEuSOe2uXhyD4A3N6V3qkbiMBCS9Ha3syEwfHaS-HjOgzTNGMmAqvO--pP_BS2oWc1IxFRDDk2lnv6qwNA=='], b'gAAAAABni-xMUi7yQ4vRdo9t7rqR7RkLY2wlxOhnBX3EyLTBR2K-xt2RDXwSKi-boC32LXZ7Fidwwx_E8xDfuVT55ZjjqahrIA==': [b'gAAAAABni-xMhpVqkdHaOBcZ_KuW1doVaPw2o4Q43uIaaS6wExIaArzz2Y1c-tQtT89rUx6diK6UNoN5XyKnInW9F5ytm7Raag=='], b'gAAAAABni-xMd2gJuM91T7WywPPYc-6IsJgrjW9j47ZQ57N7MTwEQkYvf9l_D3_U3VL0PHnsS3vS6ToxbtVwaYpSxBTE5Re-JA==': []}]}
+INFO:root:Resultados descifrados: 
+[{'id': '1', 'nombre': 'Camiseta'}, {'id': '2', 'nombre': 'Pantalón'}, {'id': '3', 'nombre': 'Zapatos'}, {'id': '4', 'nombre': 'Gorra'}, {'id': ['read'], 'nombre': ['read'], 'precio': []}]
+INFO:root:======== FIN DE RESULTADOS ========
